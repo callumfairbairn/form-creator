@@ -11,7 +11,7 @@ export const Preview = () => {
 
   if (!formValues) {
     return (
-      <p className="text-center prose prose-xl font-bold p-5">
+      <p className="text-center mx-auto prose prose-xl font-bold p-5">
         Please add some fields
       </p>
     )
