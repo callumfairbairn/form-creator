@@ -2,13 +2,16 @@ import { Form } from "react-final-form";
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from "react-final-form-arrays";
 import { AddFieldButton } from "../components/AddFieldButton";
-import { FieldType } from "../types";
+import { FieldType, FormValues } from "../types";
 import { CreateField } from "../components/CreateField";
+import { useContext } from "react";
+import { FormContext } from "../components/FormContextProvider";
 
 export const Create = () => {
+  const [, setFormContext] = useContext(FormContext);
   return (
     <Form
-      onSubmit={() => {}}
+      onSubmit={(formValues: FormValues) => setFormContext(formValues)}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
@@ -22,6 +25,7 @@ export const Create = () => {
               </div>
             )}
           </FieldArray>
+          <button type="submit" aria-label="save" className="btn">Save</button>
         </form>
       )}
     >

@@ -14,20 +14,14 @@ describe("App", () => {
     // Add a Create Field box
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
 
-    // Expect fields
+    // Expect copy
     expect(screen.getByText("Field 1")).toBeInTheDocument();
-    expect(screen.getByLabelText("Input type")).toBeInTheDocument();
-    expect(screen.getByLabelText("Label")).toBeInTheDocument();
-    expect(screen.getByLabelText("Name")).toBeInTheDocument();
-    expect(screen.getByLabelText("Placeholder")).toBeInTheDocument();
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
-    expect(screen.getByRole("option", { name: "text" })).toBeInTheDocument();
 
     // Remove the Create Field box
     userEvent.click(screen.getByRole("button", { name: "remove-field" }))
 
     // Expect copy to be removed
-    expect(screen.queryByLabelText("Input type")).not.toBeInTheDocument();
+    expect(screen.queryByText("Field 1")).not.toBeInTheDocument();
 
     // Add two boxes
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
@@ -44,5 +38,24 @@ describe("App", () => {
     userEvent.click(screen.getByText("Preview"))
 
     expect(screen.getByText("Please add some fields")).toBeInTheDocument();
+  })
+
+  it("saves form and persists form state to preview", () => {
+    renderWithRouter(<App />, { initialEntries: ["/create"] });
+
+    userEvent.click(screen.getByRole("button", { name: "add-field" }))
+
+    userEvent.selectOptions(
+      screen.getByRole("combobox"),
+      screen.getByRole("option", { name: "text" })
+    )
+    userEvent.paste(screen.getByLabelText("Label"), "Favourite sport")
+    userEvent.paste(screen.getByLabelText("Name"), "favourite-sport")
+    userEvent.paste(screen.getByLabelText("Placeholder"), "Tennis")
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+
+    userEvent.click(screen.getByText("Preview"))
+
+    expect(screen.getByText("Favourite sport")).toBeInTheDocument();
   })
 })
