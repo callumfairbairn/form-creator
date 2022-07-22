@@ -1,5 +1,5 @@
 export const Preview = () => {
   return (
-    <div>Preview your form</div>
+    <div>Please add some fields</div>
   )
 }
