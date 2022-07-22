@@ -11,7 +11,7 @@ describe("App", () => {
     userEvent.click(screen.getByText("Create"))
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
 
-    expect(screen.getByText("Input type")).toBeInTheDocument();
+    expect(screen.getByLabelText("Input type")).toBeInTheDocument();
   })
 
   it("renders the Preview page", () => {

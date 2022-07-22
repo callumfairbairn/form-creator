@@ -1,4 +1,4 @@
-export interface Field {
+export interface FieldType {
   type?: "text",
   label?: string,
   name?: string

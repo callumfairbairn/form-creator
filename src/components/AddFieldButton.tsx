@@ -1,8 +1,8 @@
-import { Field } from "../types";
+import { FieldType } from "../types";
 
 interface AddFieldButtonProps {
   // Final form hasn't typed fields as an array, but an object with a push method 🤷
-  fields: { push: (field: Field) => void }
+  fields: { push: (field: FieldType) => void }
 }
 
 export const AddFieldButton = ({ fields }: AddFieldButtonProps) => {
