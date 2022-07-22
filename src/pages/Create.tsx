@@ -25,7 +25,9 @@ export const Create = () => {
               </div>
             )}
           </FieldArray>
-          <button type="submit" aria-label="save" className="btn">Save</button>
+          <div className="flex justify-end">
+            <button type="submit" aria-label="save" className="btn">Save</button>
+          </div>
         </form>
       )}
     >

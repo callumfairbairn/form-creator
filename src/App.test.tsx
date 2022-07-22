@@ -11,23 +11,17 @@ describe("App", () => {
     // Navigate to /create
     userEvent.click(screen.getByText("Create"))
 
-    // Add a Create Field box
+    // Add a Create Field box and expect that it renders copy for that field
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
-
-    // Expect copy
     expect(screen.getByText("Field 1")).toBeInTheDocument();
 
-    // Remove the Create Field box
+    // Remove the Create Field box and expect copy to be removed
     userEvent.click(screen.getByRole("button", { name: "remove-field" }))
-
-    // Expect copy to be removed
     expect(screen.queryByText("Field 1")).not.toBeInTheDocument();
 
-    // Add two boxes
+    // Add two boxes and expect that it renders copy for both
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
-
-    // Expect copy
     expect(screen.getByText("Field 1")).toBeInTheDocument();
     expect(screen.getByText("Field 2")).toBeInTheDocument();
   })
@@ -43,8 +37,10 @@ describe("App", () => {
   it("saves form and persists form state to Preview and back to Create", () => {
     renderWithRouter(<App />, { initialEntries: ["/create"] });
 
+    // Add field
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
 
+    // Fill in field info
     userEvent.selectOptions(
       screen.getByRole("combobox"),
       screen.getByRole("option", { name: "input" })
@@ -54,12 +50,12 @@ describe("App", () => {
     userEvent.paste(screen.getByLabelText("Placeholder"), "Tennis")
     userEvent.click(screen.getByRole("button", { name: "save" }))
 
+    // Switch to the Preview page and check that the user's field has rendered correctly
     userEvent.click(screen.getByText("Preview"))
-
     expect(screen.getByLabelText("Favourite sport")).toHaveAttribute("placeholder", "Tennis");
 
+    // Go back to Create to check that state has persisted
     userEvent.click(screen.getByText("Create"))
-
     expect(screen.getByText("Field 1")).toBeInTheDocument();
   })
 })
