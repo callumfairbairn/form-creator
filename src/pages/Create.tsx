@@ -1,8 +1,9 @@
-import { Field, Form } from "react-final-form"
-import arrayMutators from 'final-form-arrays'
+import { Form } from "react-final-form";
+import arrayMutators from 'final-form-arrays';
 import { FieldArray } from "react-final-form-arrays";
 import { AddFieldButton } from "../components/AddFieldButton";
 import { FieldType } from "../types";
+import { CreateField } from "../components/CreateField";
 
 export const Create = () => {
   return (
@@ -14,18 +15,9 @@ export const Create = () => {
           <FieldArray<FieldType> name="fields">
             {({ fields }) => (
               <div>
-                {fields.map((name) => (
-                  <div key={name} className="container mx-auto p-2 m-1 bg-base-300 max-w-2xl rounded">
-                    <label className="label font-medium flex justify-start gap-2">
-                      Input type
-                      <Field
-                        component="input"
-                        name={`${name}.label`}
-                        className="input"
-                      />
-                    </label>
-                  </div>
-                ))}
+                {fields.map((name) =>
+                  <CreateField key={name} name={name} />
+                )}
                 <AddFieldButton fields={fields} />
               </div>
             )}
