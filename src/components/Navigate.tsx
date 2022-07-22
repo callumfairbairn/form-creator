@@ -7,12 +7,12 @@ interface HeaderProps {
 
 export const Navigate = ({ children }: HeaderProps) => {
   return (
-    <div className="flex justify-center btn-group pb-2">
-      <Link to="/create" className="btn btn-outline">Create</Link>
-      <Link to="/preview" className="btn btn-outline">Preview</Link>
-      <div>
-        {children}
+    <div>
+      <div className="flex justify-center btn-group pb-2">
+        <Link to="/create" className="btn btn-outline">Create</Link>
+        <Link to="/preview" className="btn btn-outline">Preview</Link>
       </div>
+      {children}
     </div>
   )
 }

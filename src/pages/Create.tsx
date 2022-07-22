@@ -1,5 +1,33 @@
+import { Form } from "react-final-form"
+import arrayMutators from 'final-form-arrays'
+import { FieldArray } from "react-final-form-arrays"
+
 export const Create = () => {
   return (
-    <div>Create your form</div>
+    <Form
+      onSubmit={() => {}}
+      mutators={{ ...arrayMutators }}
+      render={({ handleSubmit }) => (
+        <form onSubmit={handleSubmit}>
+          <FieldArray name="fields">
+            {({ fields }) => (
+              <div>
+                {fields.map((name) => (
+                  <div key={name}>
+                    Input type
+                  </div>
+                ))}
+                <button onClick={() => fields.push({})} aria-label="add-field" className="btn btn-sm btn-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </FieldArray>
+        </form>
+      )}
+    >
+    </Form>
   )
 }

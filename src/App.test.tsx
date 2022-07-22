@@ -9,8 +9,9 @@ describe("App", () => {
     renderWithRouter(<App />);
 
     userEvent.click(screen.getByText("Create"))
+    userEvent.click(screen.getByRole("button", { name: "add-field" }))
 
-    expect(screen.getByText("Create your form")).toBeInTheDocument();
+    expect(screen.getByText("Input type")).toBeInTheDocument();
   })
 
   it("renders the Preview page", () => {
