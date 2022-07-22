@@ -19,11 +19,9 @@ export const CreateField = ({ fields, index, name }: CreateFieldProps) => {
       </div>
       <label className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4">
         Input type
-        <Field
-          component="input"
-          name={`${name}.type`}
-          className="input sm:col-span-3"
-        />
+        <Field component="select" name={`${name}.type`} className="select">
+          <option value="text">text</option>
+        </Field>
       </label>
       <label className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4">
         Label
