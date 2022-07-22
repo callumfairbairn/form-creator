@@ -23,11 +23,13 @@ export const Create = () => {
                 {fields.map((name, index) =>
                   <CreateField key={name} fields={fields} index={index} name={name} errors={errors} />
                 )}
-                <AddFieldButton fields={fields} />
+                <div className="max-w-2xl mx-auto">
+                  <AddFieldButton fields={fields} />
+                </div>
               </div>
             )}
           </FieldArray>
-          <div className="flex justify-end">
+          <div className="flex justify-end max-w-2xl mx-auto">
             <button type="submit" aria-label="save" className="btn">Save</button>
           </div>
         </form>

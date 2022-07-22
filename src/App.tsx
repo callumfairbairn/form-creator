@@ -9,7 +9,7 @@ function App() {
   return (
     <FormContextProvider>
       <div className="min-h-screen bg-gradient-to-b from-zinc-400 p-5">
-        <div className="container bg-base-100 mx-auto p-4 rounded">
+        <div className="container bg-base-100 mx-auto p-4 rounded max-w-5xl">
           <Navigation>
             <Routes>
               <Route path="/create" element={<Create />} />
