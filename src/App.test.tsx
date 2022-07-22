@@ -40,7 +40,7 @@ describe("App", () => {
     expect(screen.getByText("Please add some fields")).toBeInTheDocument();
   })
 
-  it("saves form and persists form state to preview", () => {
+  it("saves form and persists form state to Preview and back to Create", () => {
     renderWithRouter(<App />, { initialEntries: ["/create"] });
 
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
@@ -57,5 +57,9 @@ describe("App", () => {
     userEvent.click(screen.getByText("Preview"))
 
     expect(screen.getByLabelText("Favourite sport")).toHaveAttribute("placeholder", "Tennis");
+
+    userEvent.click(screen.getByText("Create"))
+
+    expect(screen.getByText("Field 1")).toBeInTheDocument();
   })
 })

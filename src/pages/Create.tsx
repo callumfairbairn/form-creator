@@ -8,14 +8,14 @@ import { useContext } from "react";
 import { FormContext } from "../components/FormContextProvider";
 
 export const Create = () => {
-  const [, setFormContext] = useContext(FormContext);
+  const [formValues, setFormContext] = useContext(FormContext);
   return (
     <Form
       onSubmit={(formValues: FormValues) => setFormContext(formValues)}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <FieldArray<FieldType> name="fields">
+          <FieldArray<FieldType> name="fields" initialValue={formValues?.fields}>
             {({ fields }) => (
               <div>
                 {fields.map((name, index) =>
