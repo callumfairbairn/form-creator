@@ -25,8 +25,8 @@ export const Preview = () => {
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className="container mx-auto p-2 m-1 bg-base-300 max-w-2xl rounded">
-              {formValues.fields.map((field: FieldType) => (
-                <PreviewField key={field.name} field={field} />
+              {formValues.fields.map((field: FieldType, index) => (
+                <PreviewField key={`${field.name}-${index}`} field={field} />
               ))}
               <div className="flex justify-end">
                 <button type="submit" aria-label="save" className="btn">Save</button>

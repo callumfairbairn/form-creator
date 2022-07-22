@@ -86,4 +86,13 @@ describe("App", () => {
     userEvent.click(screen.getByText("Preview"))
     expect(screen.getByRole("textbox")).toBeInTheDocument();
   })
+
+  it("does not save form if there are errors", () => {
+    renderWithRouter(<App />, { initialEntries: ["/create"] });
+
+    // Add field
+    userEvent.click(screen.getByRole("button", { name: "add-field" }))
+
+    expect(screen.getAllByPlaceholderText("Required")).toHaveLength(2)
+  })
 })

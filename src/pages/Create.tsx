@@ -11,15 +11,17 @@ export const Create = () => {
   const [formValues, setFormContext] = useContext(FormContext);
   return (
     <Form
-      onSubmit={(formValues: FormValues) => setFormContext(formValues)}
+      onSubmit={(formValues: FormValues) => {
+        setFormContext(formValues);
+      }}
       mutators={{ ...arrayMutators }}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit, errors }) => (
         <form onSubmit={handleSubmit}>
           <FieldArray<FieldType> name="fields" initialValue={formValues?.fields}>
             {({ fields }) => (
               <div>
                 {fields.map((name, index) =>
-                  <CreateField key={name} fields={fields} index={index} name={name} />
+                  <CreateField key={name} fields={fields} index={index} name={name} errors={errors} />
                 )}
                 <AddFieldButton fields={fields} />
               </div>
