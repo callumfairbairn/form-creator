@@ -20,12 +20,13 @@ export const Preview = () => {
     <Form
       onSubmit={() => {}}
       mutators={{ ...arrayMutators }}
-      className="container mx-auto p-2 m-1 bg-base-300 max-w-2xl rounded"
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          {formValues.fields.map((field: FieldType) => (
-            <PreviewField key={field.name} field={field} />
-          ))}
+          <div className="container mx-auto p-2 m-1 bg-base-300 max-w-2xl rounded">
+            {formValues.fields.map((field: FieldType) => (
+              <PreviewField key={field.name} field={field} />
+            ))}
+          </div>
         </form>
       )}
     />
