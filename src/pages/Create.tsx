@@ -3,7 +3,7 @@ import arrayMutators from 'final-form-arrays';
 import { FieldArray } from "react-final-form-arrays";
 import { AddFieldButton } from "../components/AddFieldButton";
 import { FormValues } from "../types";
-import { CreateField } from "../components/CreateField";
+import { CreateField } from "../components/create-field/CreateField";
 import { useContext } from "react";
 import { FormContext } from "../components/FormContextProvider";
 
