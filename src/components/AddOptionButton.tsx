@@ -1,15 +1,15 @@
 import { FinalFormArray } from "../types";
 
-interface AddFieldButtonProps {
-  fields: FinalFormArray
+interface AddOptionButtonProps {
+  options: FinalFormArray
 }
 
-export const AddFieldButton = ({ fields }: AddFieldButtonProps) => {
+export const AddOptionButton = ({ options }: AddOptionButtonProps) => {
   return (
     <button
-      onClick={() => fields.push({})}
-      aria-label="add-field"
-      className="btn btn-sm btn-circle"
+      aria-label="add-option"
+      onClick={() => options.push("")}
+      className="btn btn-sm btn-ghost btn-circle"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,7 @@
-import { FinalFormFields } from "../types";
+import { FinalFormArray } from "../types";
 
 interface RemoveFieldButtonProps {
-  fields: FinalFormFields
+  fields: FinalFormArray
   index: number
 }
 

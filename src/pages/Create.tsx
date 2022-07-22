@@ -2,7 +2,7 @@ import { Form } from "react-final-form";
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from "react-final-form-arrays";
 import { AddFieldButton } from "../components/AddFieldButton";
-import { FieldType, FormValues } from "../types";
+import { FormValues } from "../types";
 import { CreateField } from "../components/CreateField";
 import { useContext } from "react";
 import { FormContext } from "../components/FormContextProvider";
@@ -17,7 +17,7 @@ export const Create = () => {
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, errors }) => (
         <form onSubmit={handleSubmit}>
-          <FieldArray<FieldType> name="fields" initialValue={formValues?.fields}>
+          <FieldArray name="fields" initialValue={formValues?.fields}>
             {({ fields }) => (
               <div>
                 {fields.map((name, index) =>

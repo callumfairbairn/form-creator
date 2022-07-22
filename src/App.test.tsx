@@ -85,6 +85,23 @@ describe("App", () => {
     // Go to Preview and check of existence of textarea
     userEvent.click(screen.getByText("Preview"))
     expect(screen.getByRole("textbox")).toBeInTheDocument();
+
+    // Go back to Create, change input type to checkbox
+    userEvent.click(screen.getByText("Create"))
+    userEvent.selectOptions(
+      screen.getByRole("combobox"),
+      screen.getByRole("option", { name: "checkbox" })
+    )
+    userEvent.click(screen.getByRole("button", { name: "add-option" }))
+
+    // Check that Placeholder is gone and add an option
+    expect(screen.queryByLabelText("Placeholder")).not.toBeInTheDocument()
+    userEvent.paste(screen.getByLabelText("Options"), "Option 1")
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+
+    // Go back to Preview and check that "Option 1 is rendered"
+    userEvent.click(screen.getByText("Preview"))
+    expect(screen.getByLabelText("Option 1")).toBeInTheDocument()
   })
 
   it("does not save form if there are errors", () => {

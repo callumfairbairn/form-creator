@@ -1,13 +1,15 @@
 export interface FieldType {
-  type?: "input" | "textarea",
+  type?: "input" | "textarea" | "checkbox",
   label?: string,
   name?: string
   placeholder?: string
+  options?: string[]
 }
 
-export type FinalFormFields = {
-  push: (field: FieldType) => void
+export type FinalFormArray = {
+  push: (field: any) => void
   remove: (index) => void
+  value: any
 }
 
 export interface FormValues {
