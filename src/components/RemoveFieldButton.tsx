@@ -1,14 +1,15 @@
 import { FinalFormFields } from "../types";
 
-interface AddFieldButtonProps {
+interface RemoveFieldButtonProps {
   fields: FinalFormFields
+  index: number
 }
 
-export const AddFieldButton = ({ fields }: AddFieldButtonProps) => {
+export const RemoveFieldButton = ({ fields, index }: RemoveFieldButtonProps) => {
   return (
     <button
-      onClick={() => fields.push({})}
-      aria-label="add-field"
+      onClick={() => fields.remove(index)}
+      aria-label="remove-field"
       className="btn btn-sm btn-circle"
     >
       <svg
@@ -22,7 +23,7 @@ export const AddFieldButton = ({ fields }: AddFieldButtonProps) => {
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          d="M18 12H6"
         />
       </svg>
     </button>

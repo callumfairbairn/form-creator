@@ -11,10 +11,15 @@ describe("App", () => {
     userEvent.click(screen.getByText("Create"))
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
 
+    expect(screen.getByText("Field 1")).toBeInTheDocument();
     expect(screen.getByLabelText("Input type")).toBeInTheDocument();
     expect(screen.getByLabelText("Label")).toBeInTheDocument();
     expect(screen.getByLabelText("Name")).toBeInTheDocument();
     expect(screen.getByLabelText("Placeholder")).toBeInTheDocument();
+
+    userEvent.click(screen.getByRole("button", { name: "remove-field" }))
+
+    expect(screen.queryByLabelText("Input type")).not.toBeInTheDocument();
   })
 
   it("renders the Preview page", () => {

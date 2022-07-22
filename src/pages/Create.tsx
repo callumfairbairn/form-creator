@@ -15,8 +15,8 @@ export const Create = () => {
           <FieldArray<FieldType> name="fields">
             {({ fields }) => (
               <div>
-                {fields.map((name) =>
-                  <CreateField key={name} name={name} />
+                {fields.map((name, index) =>
+                  <CreateField key={name} fields={fields} index={index} name={name} />
                 )}
                 <AddFieldButton fields={fields} />
               </div>

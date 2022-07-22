@@ -4,3 +4,8 @@ export interface FieldType {
   name?: string
   placeholder?: string
 }
+
+export type FinalFormFields = {
+  push: (field: FieldType) => void
+  remove: (index) => void
+}
