@@ -47,7 +47,7 @@ describe("App", () => {
 
     userEvent.selectOptions(
       screen.getByRole("combobox"),
-      screen.getByRole("option", { name: "text" })
+      screen.getByRole("option", { name: "input" })
     )
     userEvent.paste(screen.getByLabelText("Label"), "Favourite sport")
     userEvent.paste(screen.getByLabelText("Name"), "favourite-sport")
@@ -56,6 +56,6 @@ describe("App", () => {
 
     userEvent.click(screen.getByText("Preview"))
 
-    expect(screen.getByText("Favourite sport")).toBeInTheDocument();
+    expect(screen.getByLabelText("Favourite sport")).toHaveAttribute("placeholder", "Tennis");
   })
 })

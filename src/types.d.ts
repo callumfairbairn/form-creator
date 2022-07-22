@@ -1,5 +1,5 @@
 export interface FieldType {
-  type?: "text",
+  type?: "input",
   label?: string,
   name?: string
   placeholder?: string

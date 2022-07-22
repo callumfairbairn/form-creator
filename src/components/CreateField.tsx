@@ -20,7 +20,7 @@ export const CreateField = ({ fields, index, name }: CreateFieldProps) => {
       <label className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4">
         Input type
         <Field component="select" name={`${name}.type`} className="select">
-          <option value="text">text</option>
+          <option value="input">input</option>
         </Field>
       </label>
       <label className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4">
