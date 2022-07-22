@@ -54,6 +54,11 @@ describe("App", () => {
     userEvent.click(screen.getByText("Preview"))
     expect(screen.getByLabelText("Favourite sport")).toHaveAttribute("placeholder", "Tennis");
 
+    // Submit form and check that correct json payload is displayed
+    userEvent.paste(screen.getByLabelText("Favourite sport"), "Football")
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+    expect(screen.getByText('{ "favourite-sport": "Football" }')).toBeInTheDocument();
+
     // Go back to Create to check that state has persisted
     userEvent.click(screen.getByText("Create"))
     expect(screen.getByText("Field 1")).toBeInTheDocument();
