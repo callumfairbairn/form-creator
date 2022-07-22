@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { Field, Form } from "react-final-form";
+import { Form } from "react-final-form";
 import { FormContext } from "../components/FormContextProvider";
 import { FieldType } from "../types";
 import arrayMutators from "final-form-arrays";
+import { PreviewField } from "../components/PreviewField";
 
 export const Preview = () => {
   const [formValues] = useContext(FormContext);
@@ -22,11 +23,8 @@ export const Preview = () => {
       className="container mx-auto p-2 m-1 bg-base-300 max-w-2xl rounded"
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          {formValues.fields.map(({ label, name, placeholder }: FieldType) => (
-            <label key={name}>
-              {label}
-              <Field key={name} name={name || "undefined"} placeholder={placeholder} component="input" />
-            </label>
+          {formValues.fields.map((field: FieldType) => (
+            <PreviewField key={field.name} field={field} />
           ))}
         </form>
       )}
