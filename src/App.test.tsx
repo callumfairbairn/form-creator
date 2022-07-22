@@ -4,6 +4,12 @@ import App from './App';
 import { renderWithRouter } from "./testHelpers";
 import userEvent from "@testing-library/user-event";
 
+const fillInTextFields = () => {
+  userEvent.paste(screen.getByLabelText("Label"), "Favourite sport")
+  userEvent.paste(screen.getByLabelText("Name"), "favourite-sport")
+  userEvent.paste(screen.getByLabelText("Placeholder"), "Tennis")
+}
+
 describe("App", () => {
   it("renders the Create page and adds and removes Create Field boxes", () => {
     renderWithRouter(<App />);
@@ -45,9 +51,7 @@ describe("App", () => {
       screen.getByRole("combobox"),
       screen.getByRole("option", { name: "input" })
     )
-    userEvent.paste(screen.getByLabelText("Label"), "Favourite sport")
-    userEvent.paste(screen.getByLabelText("Name"), "favourite-sport")
-    userEvent.paste(screen.getByLabelText("Placeholder"), "Tennis")
+    fillInTextFields()
     userEvent.click(screen.getByRole("button", { name: "save" }))
 
     // Switch to the Preview page and check that the user's field has rendered correctly
@@ -62,5 +66,24 @@ describe("App", () => {
     // Go back to Create to check that state has persisted
     userEvent.click(screen.getByText("Create"))
     expect(screen.getByText("Field 1")).toBeInTheDocument();
+  })
+
+  it("renders input based on selection in Preview", () => {
+    renderWithRouter(<App />, { initialEntries: ["/create"] });
+
+    // Add field
+    userEvent.click(screen.getByRole("button", { name: "add-field" }))
+
+    // Create textarea
+    userEvent.selectOptions(
+      screen.getByRole("combobox"),
+      screen.getByRole("option", { name: "textarea" })
+    )
+    fillInTextFields()
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+
+    // Go to Preview and check of existence of textarea
+    userEvent.click(screen.getByText("Preview"))
+    expect(screen.getByRole("textbox")).toBeInTheDocument();
   })
 })

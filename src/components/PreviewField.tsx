@@ -6,7 +6,7 @@ interface PreviewFieldProps {
 }
 
 export const PreviewField = ({ field }: PreviewFieldProps) => {
-  const { label, name, placeholder } = field;
+  const { label, name, placeholder, type } = field;
   return (
     <label
       key={name}
@@ -17,7 +17,7 @@ export const PreviewField = ({ field }: PreviewFieldProps) => {
         key={name}
         name={name || "undefined"}
         placeholder={placeholder}
-        component="input"
+        component={type}
         className="input sm:col-span-3"
       />
     </label>

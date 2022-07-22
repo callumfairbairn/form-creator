@@ -21,6 +21,7 @@ export const CreateField = ({ fields, index, name }: CreateFieldProps) => {
         Input type
         <Field component="select" name={`${name}.type`} className="select">
           <option value="input">input</option>
+          <option value="textarea">textarea</option>
         </Field>
       </label>
       <label className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4">
