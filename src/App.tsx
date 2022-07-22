@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate } from "./components/Navigate";
+import { Navigation } from "./components/Navigation";
 import { Route, Routes } from "react-router-dom";
 import { Create } from "./pages/Create";
 import { Preview } from "./pages/Preview";
@@ -10,13 +10,13 @@ function App() {
     <FormContextProvider>
       <div className="min-h-screen bg-gradient-to-b from-zinc-400 p-5">
         <div className="container bg-base-100 mx-auto p-4 rounded">
-          <Navigate>
+          <Navigation>
             <Routes>
               <Route path="/create" element={<Create />} />
               <Route path="/preview" element={<Preview />} />
               <Route path="*" element={<Create />} />
             </Routes>
-          </Navigate>
+          </Navigation>
         </div>
       </div>
     </FormContextProvider>
