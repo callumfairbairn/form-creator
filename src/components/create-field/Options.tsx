@@ -2,6 +2,7 @@ import { Field } from "react-final-form";
 import { AddOptionButton } from "../buttons/AddOptionButton";
 import { FieldArray } from "react-final-form-arrays";
 import { RemoveOptionButton } from "../buttons/RemoveOptionButton";
+import { SubmitFormOnChange } from "./SubmitFormOnChange";
 
 interface OptionsProps {
   name: string;
@@ -13,8 +14,12 @@ export const Options = ({ name, selectedType, selectedOptions }: OptionsProps) =
   if (selectedType !== "checkbox") {
     return null
   }
+
+  const compositeName = `${name}.options`
+
   return (
-    <FieldArray name={`${name}.options`} initialValue={selectedOptions}>
+    <div>
+    <FieldArray name={compositeName} initialValue={selectedOptions}>
       {({ fields: options }) => (
         <label className="grid label font-medium">
           Options
@@ -35,5 +40,7 @@ export const Options = ({ name, selectedType, selectedOptions }: OptionsProps) =
         </label>
         )}
     </FieldArray>
+    <SubmitFormOnChange name={compositeName} />
+    </div>
   )
 }

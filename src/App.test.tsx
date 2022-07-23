@@ -43,8 +43,6 @@ describe("App", () => {
       screen.getByRole("option", { name: "input" })
     )
     fillInTextFields()
-    userEvent.click(screen.getByRole("button", { name: "save" }))
-    expect(screen.getByText("Saved")).toBeInTheDocument()
 
     // Check that the user's field has rendered correctly
     expect(screen.getByLabelText("Favourite sport")).toHaveAttribute("placeholder", "Tennis");
@@ -56,7 +54,6 @@ describe("App", () => {
 
     // Change form and remove json
     userEvent.paste(screen.getByLabelText("Label"), "Favourite food")
-    userEvent.click(screen.getByRole("button", { name: "save" }))
     expect(screen.queryByText('{ "favourite-sport": "Football" }')).not.toBeInTheDocument();
   })
 
@@ -83,7 +80,6 @@ describe("App", () => {
     userEvent.paste(screen.getByLabelText("Option 1"), "Ketchup")
     userEvent.click(screen.getByRole("button", { name: "add-option" }))
     userEvent.paste(screen.getByLabelText("Option 2"), "Mustard")
-    userEvent.click(screen.getByRole("button", { name: "save" }))
 
     // Go to Preview and check that both options are there
     expect(screen.getByLabelText("Ketchup")).toBeInTheDocument()
@@ -91,7 +87,6 @@ describe("App", () => {
 
     // Remove "Option 2" and check that it's gone from the Preview
     userEvent.click(screen.getAllByRole("button", { name: "remove-option" })[1])
-    userEvent.click(screen.getByRole("button", { name: "save" }))
     userEvent.click(screen.getByText("Preview"))
     expect(screen.getByLabelText("Ketchup")).toBeInTheDocument()
     expect(screen.queryByLabelText("Mustard")).not.toBeInTheDocument()
