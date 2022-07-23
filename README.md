@@ -19,7 +19,9 @@ use Create React App. This turned out very well in my opinion, as it simplified 
 and it was very easy to use react-testing-library for integration tests.
 
 Using React Testing Library rather than Cypress for integration tests was nice because it ensures
-that elements are accessible.
+that elements are accessible. I employed TDD throughout the project, which I think
+worked well. My test suite is pretty robust, and I have confidence to refactor as long as all the
+tests stay green.
 
 I have decided to go with mostly integration tests in App.test.tsx because I think that
 integration tests are more resilient to change. This worked out very well because I actually
@@ -51,3 +53,6 @@ date input etc.
 
 The field components in create-field share a lot of logic, so maybe I could refactor
 that shared logic out to get rid of repetition.
+
+I would also make it so that if all fields are removed, the preview updates and goes
+back to the "Please add some fields" stage.
