@@ -53,6 +53,11 @@ describe("App", () => {
     userEvent.paste(screen.getByLabelText("Favourite sport"), "Football")
     userEvent.click(screen.getByRole("button", { name: "submit" }))
     expect(screen.getByText('{ "favourite-sport": "Football" }')).toBeInTheDocument();
+
+    // Change form and remove json
+    userEvent.paste(screen.getByLabelText("Label"), "Favourite food")
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+    expect(screen.queryByText('{ "favourite-sport": "Football" }')).not.toBeInTheDocument();
   })
 
   it("renders Require for required fields", () => {

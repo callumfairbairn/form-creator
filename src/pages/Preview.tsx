@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Form } from "react-final-form";
 import { FormContext } from "../components/FormContextProvider";
 import { FieldType } from "../types";
@@ -8,6 +8,10 @@ import { PreviewField } from "../components/PreviewField";
 export const Preview = () => {
   const [formValues] = useContext(FormContext);
   const [payload, setPayload] = useState<Record<string, any>>()
+
+  useEffect(() => {
+    setPayload(undefined)
+  }, [formValues])
 
   if (!formValues) {
     return (
