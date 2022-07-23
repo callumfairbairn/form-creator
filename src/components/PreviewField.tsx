@@ -12,6 +12,7 @@ export const PreviewField = ({ field }: PreviewFieldProps) => {
     return <div />
   }
 
+  // I could refactor this into CheckboxPreview
   if (type === "checkbox") {
     return (
       <div>
@@ -35,6 +36,7 @@ export const PreviewField = ({ field }: PreviewFieldProps) => {
     )
   }
 
+  // I could refactor this into TextboxPreview
   return (
     <label
       className="label font-medium gap-2 grid grid-cols-1 lg:grid-cols-4"

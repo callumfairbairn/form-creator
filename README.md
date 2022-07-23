@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# Callum's Form Creator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Run with npm start or go to https://callums-form-creator.netlify.app/
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This is a form creator akin to Google Forms. You can add or remove
+fields with the left hand side, and the right hand side will automatically 
+show you a preview of the form which you have created
 
-### `npm start`
+The app should be fully mobile friendly and accessible (although
+I doubt the colour scheme has enough contrast to be completely accessible).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Comments
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I initially wanted to use a framework such as Next.js or Remix, but I then I thought that
+if my app isn't going to have routes or talk to a backend/database, it might be easier to
+use Create React App. This turned out very well in my opinion, as it simplified my codebase
+and it was very easy to use react-testing-library for integration tests.
 
-### `npm test`
+Using React Testing Library rather than Cypress for integration tests was nice because it ensures
+that elements are accessible.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I have decided to go with mostly integration tests in App.test.tsx because I think that
+integration tests are more resilient to change. This worked out very well because I actually
+misread the brief at first and didn't realise that the preview had to be on the same page as
+the form creation. I initially had them on two separate routes, which you could switch between
+with a toggle. When I realised my mistake, it was actually very easy to refactor my code to
+put them on the same page - it only took about 5 minutes.
 
-### `npm run build`
+I'm quite happy with how this project turned out, although my decision to use
+React Final Form has complicated a lot of the jsx. It's a powerful library,
+and the form library which I am most familiar with, but it adds a lot of difficult
+to read syntax.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I also should have installed a more strict linter when I started, as the ordering of my
+props are a bit of a mess, and I have semi-colons everywhere (I am used to putting these
+in as my linter at work requires them)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## What I would do with more time
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I would add the ability to inset form fields above and below existing ones,
+rather than forcing the user to remove all fields in front of the position where
+they want to add a field.
 
-### `npm run eject`
+I would also make sure that if the user selects "checkbox" as the input type,
+that they have to input some options before the preview is rendered.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I would also add more input types such as select, radio buttons (multiple choice)
+date input etc.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The field components in create-field share a lot of logic, so maybe I could refactor
+that shared logic out to get rid of repetition.
