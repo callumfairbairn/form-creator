@@ -53,6 +53,7 @@ describe("App", () => {
     )
     fillInTextFields()
     userEvent.click(screen.getByRole("button", { name: "save" }))
+    expect(screen.getByText("Saved")).toBeInTheDocument()
 
     // Switch to the Preview page and check that the user's field has rendered correctly
     userEvent.click(screen.getByText("Preview"))
