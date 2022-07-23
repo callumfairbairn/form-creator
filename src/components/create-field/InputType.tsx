@@ -14,7 +14,7 @@ export const InputType = ({ name, error }: InputTypeProps) => {
         validate={requiredTextField}
         component="select"
         name={`${name}.type`}
-        className={`select ${error && "input-error text-red-300"}`}
+        className={`select w-max ${error && "input-error text-red-300"}`}
       >
         <option hidden>-</option>
         <option value="input">input</option>
