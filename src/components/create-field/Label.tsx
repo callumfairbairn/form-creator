@@ -8,7 +8,7 @@ interface LabelProps {
 
 export const Label = ({ name, error }: LabelProps) => {
   return (
-    <label className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4">
+    <label className="label font-medium gap-2 grid grid-cols-1 lg:grid-cols-4">
       Label
       <Field
         validate={requiredTextField}

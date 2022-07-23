@@ -37,7 +37,7 @@ export const PreviewField = ({ field }: PreviewFieldProps) => {
 
   return (
     <label
-      className="label font-medium gap-2 grid grid-cols-1 sm:grid-cols-4"
+      className="label font-medium gap-2 grid grid-cols-1 lg:grid-cols-4"
     >
       {label}
       <Field
