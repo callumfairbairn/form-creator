@@ -1,6 +1,7 @@
 import { Field } from "react-final-form";
-import { AddOptionButton } from "../AddOptionButton";
+import { AddOptionButton } from "../buttons/AddOptionButton";
 import { FieldArray } from "react-final-form-arrays";
+import { RemoveOptionButton } from "../buttons/RemoveOptionButton";
 
 interface OptionsProps {
   name: string;
@@ -13,21 +14,26 @@ export const Options = ({ name, selectedType, selectedOptions }: OptionsProps) =
     return null
   }
   return (
-    <FieldArray name="options" initialValue={selectedOptions}>
+    <FieldArray name={`${name}.options`} initialValue={selectedOptions}>
       {({ fields: options }) => (
-        <label className="grid gap-2 p-2 label font-medium">
+        <label className="grid label font-medium">
           Options
-          {options.map((optionName) => (
-            <Field
-              key={`${name}.${optionName}`}
-              name={`${name}.${optionName}`}
-              component="input"
-              className="input ml-4 w-full"
-            />
-            ))}
-          <AddOptionButton options={options} />
+          {options.map((optionName, optionIndex) => (
+            <label key={`${optionName}`} className="label p-1 ml-4">
+              <div hidden>
+                Option {optionIndex + 1}
+              </div>
+              <Field
+                name={`${optionName}`}
+                component="input"
+                className="input w-full"
+              />
+              <RemoveOptionButton options={options} index={optionIndex}/>
+            </label>
+          ))}
+          <AddOptionButton options={options}/>
         </label>
-      )}
+        )}
     </FieldArray>
   )
 }

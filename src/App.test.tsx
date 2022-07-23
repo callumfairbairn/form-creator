@@ -96,12 +96,7 @@ describe("App", () => {
 
     // Check that Placeholder is gone and add an option
     expect(screen.queryByLabelText("Placeholder")).not.toBeInTheDocument()
-    userEvent.paste(screen.getByLabelText("Options"), "Option 1")
-    userEvent.click(screen.getByRole("button", { name: "save" }))
-
-    // Go back to Preview and check that "Option 1 is rendered"
-    userEvent.click(screen.getByText("Preview"))
-    expect(screen.getByLabelText("Option 1")).toBeInTheDocument()
+    userEvent.paste(screen.getByLabelText("Option 1"), "Option 1")
   })
 
   it("does not save form if there are errors", () => {
@@ -111,5 +106,36 @@ describe("App", () => {
     userEvent.click(screen.getByRole("button", { name: "add-field" }))
 
     expect(screen.getAllByPlaceholderText("Required")).toHaveLength(2)
+  })
+
+  it("removes options if remove button is clicked", () => {
+    renderWithRouter(<App />, { initialEntries: ["/create"] });
+
+    // Fill in form with two options
+    userEvent.click(screen.getByRole("button", { name: "add-field" }))
+    userEvent.selectOptions(
+      screen.getByRole("combobox"),
+      screen.getByRole("option", { name: "checkbox" })
+    )
+    userEvent.paste(screen.getByLabelText("Label"), "Favourite sport")
+    userEvent.paste(screen.getByLabelText("Name"), "favourite-sport")
+    userEvent.click(screen.getByRole("button", { name: "add-option" }))
+    userEvent.paste(screen.getByLabelText("Option 1"), "Ketchup")
+    userEvent.click(screen.getByRole("button", { name: "add-option" }))
+    userEvent.paste(screen.getByLabelText("Option 2"), "Mustard")
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+
+    // Go to Preview and check that both options are there
+    userEvent.click(screen.getByText("Preview"))
+    expect(screen.getByLabelText("Ketchup")).toBeInTheDocument()
+    expect(screen.getByLabelText("Mustard")).toBeInTheDocument()
+
+    // Go back, remove "Option 2" and check that it's gone from the Preview
+    userEvent.click(screen.getByText("Create"))
+    userEvent.click(screen.getAllByRole("button", { name: "remove-option" })[1])
+    userEvent.click(screen.getByRole("button", { name: "save" }))
+    userEvent.click(screen.getByText("Preview"))
+    expect(screen.getByLabelText("Ketchup")).toBeInTheDocument()
+    expect(screen.queryByLabelText("Mustard")).not.toBeInTheDocument()
   })
 })

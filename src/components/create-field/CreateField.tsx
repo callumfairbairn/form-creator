@@ -1,4 +1,4 @@
-import { RemoveFieldButton } from "../RemoveFieldButton";
+import { RemoveFieldButton } from "../buttons/RemoveFieldButton";
 import { FinalFormArray } from "../../types";
 import { InputType } from "./InputType";
 import { Label } from "./Label";
@@ -15,7 +15,7 @@ interface CreateFieldProps {
   fields: FinalFormArray
   index: number
   name: string
-  errors: Record<string, any> | undefined;
+  errors: Record<string, any> | undefined
 }
 
 export const CreateField = ({ fields, index, name, errors }: CreateFieldProps) => {

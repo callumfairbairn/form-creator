@@ -1,4 +1,4 @@
-import { FinalFormArray } from "../types";
+import { FinalFormArray } from "../../types";
 
 interface AddOptionButtonProps {
   options: FinalFormArray

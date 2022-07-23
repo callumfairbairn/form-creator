@@ -1,7 +1,7 @@
 import { Form } from "react-final-form";
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from "react-final-form-arrays";
-import { AddFieldButton } from "../components/AddFieldButton";
+import { AddFieldButton } from "../components/buttons/AddFieldButton";
 import { FormValues } from "../types";
 import { CreateField } from "../components/create-field/CreateField";
 import { useContext } from "react";
