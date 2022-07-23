@@ -29,7 +29,7 @@ export const Preview = () => {
                 <PreviewField key={`${field.name}-${index}`} field={field} />
               ))}
               <div className="flex justify-end">
-                <button type="submit" aria-label="save" className="btn">Save</button>
+                <button type="submit" aria-label="submit" className="btn">Submit</button>
               </div>
             </div>
           </form>

@@ -61,7 +61,7 @@ describe("App", () => {
 
     // Submit form and check that correct json payload is displayed
     userEvent.paste(screen.getByLabelText("Favourite sport"), "Football")
-    userEvent.click(screen.getByRole("button", { name: "save" }))
+    userEvent.click(screen.getByRole("button", { name: "submit" }))
     expect(screen.getByText('{ "favourite-sport": "Football" }')).toBeInTheDocument();
 
     // Go back to Create to check that state has persisted
