@@ -22,6 +22,7 @@ export const CreateField = ({ fields, index, name, errors }: CreateFieldProps) =
   const typeError = errors?.fields?.[index]?.type;
   const labelError = errors?.fields?.[index]?.label;
   const nameError = errors?.fields?.[index]?.name;
+  const optionErrors = errors?.fields?.[index]?.options || [];
   const selectedType = fields.value[index].type;
   const selectedOptions = fields.value[index].options;
 
@@ -37,7 +38,7 @@ export const CreateField = ({ fields, index, name, errors }: CreateFieldProps) =
       <Label name={name} error={labelError} />
       <Name name={name} error={nameError} />
       <Placeholder name={name} selectedType={selectedType} />
-      <Options name={name} selectedType={selectedType} selectedOptions={selectedOptions} />
+      <Options {...{ name, index, selectedType, selectedOptions, error: optionErrors[index] }} />
     </div>
   )
 }

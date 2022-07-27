@@ -77,6 +77,10 @@ describe("App", () => {
     userEvent.paste(screen.getByLabelText("Label"), "Favourite sport")
     userEvent.paste(screen.getByLabelText("Name"), "favourite-sport")
     userEvent.click(screen.getByRole("button", { name: "add-option" }))
+
+    // Expect to see "Required" in option field
+    expect(screen.getByPlaceholderText("Required")).toBeInTheDocument()
+
     userEvent.paste(screen.getByLabelText("Option 1"), "Ketchup")
     userEvent.click(screen.getByRole("button", { name: "add-option" }))
     userEvent.paste(screen.getByLabelText("Option 2"), "Mustard")
