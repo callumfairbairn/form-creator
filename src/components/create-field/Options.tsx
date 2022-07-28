@@ -4,6 +4,8 @@ import { FieldArray } from "react-final-form-arrays";
 import { RemoveOptionButton } from "../buttons/RemoveOptionButton";
 import { SubmitFormOnChange } from "./SubmitFormOnChange";
 
+const inputTypesRequiringOptions = ["checkbox", "select"]
+
 interface OptionsProps {
   name: string;
   selectedType: string | undefined;
@@ -12,7 +14,7 @@ interface OptionsProps {
 }
 
 export const Options = ({ name, selectedType, selectedOptions, error }: OptionsProps) => {
-  if (selectedType !== "checkbox") {
+  if (!selectedType || !inputTypesRequiringOptions.includes(selectedType)) {
     return null
   }
 

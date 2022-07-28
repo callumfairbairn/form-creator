@@ -1,5 +1,5 @@
 export interface FieldType {
-  type?: "input" | "textarea" | "checkbox",
+  type?: "input" | "textarea" | "checkbox" | "select",
   label?: string,
   name?: string
   placeholder?: string

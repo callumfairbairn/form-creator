@@ -23,6 +23,7 @@ export const InputType = ({ name, error }: InputTypeProps) => {
         <option value="input">input</option>
         <option value="textarea">textarea</option>
         <option value="checkbox">checkbox</option>
+        <option value="select">select</option>
       </Field>
       <SubmitFormOnChange name={compositeName} />
     </label>

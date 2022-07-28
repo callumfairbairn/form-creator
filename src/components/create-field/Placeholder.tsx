@@ -6,8 +6,10 @@ interface PlaceholderProps {
   selectedType: string | undefined;
 }
 
+const inputTypesRequiringOptions = ["checkbox", "select"]
+
 export const Placeholder = ({ name, selectedType }: PlaceholderProps) => {
-  if (selectedType === "checkbox") {
+  if (!selectedType || inputTypesRequiringOptions.includes(selectedType)) {
     return null
   }
 

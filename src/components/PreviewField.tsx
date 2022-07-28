@@ -36,6 +36,25 @@ export const PreviewField = ({ field }: PreviewFieldProps) => {
     )
   }
 
+  if (type === "select") {
+    return (
+      <div>
+        <label className="label font-medium gap-2 grid grid-cols-1 lg:grid-cols-4">{label}
+          <Field
+            name={name}
+            component="select"
+            className="select sm:col-span-3"
+          >
+            <option hidden>-</option>
+            {options?.map((option) => (
+              <option value={option}>{option}</option>
+            ))}
+          </Field>
+        </label>
+      </div>
+    )
+  }
+
   // I could refactor this into TextboxPreview
   return (
     <label
