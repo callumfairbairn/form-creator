@@ -1,5 +1,7 @@
 import { REQUIRED, requiredTextField, validateType } from "./CreateField";
 
+// I should turn these tests into parameterised tests
+
 describe("requiredTextField", () => {
   it("returns undefined for a valid input and an error for an invalid one", () => {
     expect(requiredTextField("valid label")).toEqual(undefined)

@@ -36,6 +36,7 @@ export const PreviewField = ({ field }: PreviewFieldProps) => {
     )
   }
 
+  // I could refactor this into SelectPreview
   if (type === "select") {
     return (
       <div>
